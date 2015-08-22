@@ -11,7 +11,8 @@
 |
 */
 
-//Route::get('/', 'WelcomeController@index');
+// Route::get('/', 'WelcomeController@mainpage');
+
 Route::get('/', [
 	'as' =>'index',
 	'uses' => 'IndexController@index'
@@ -42,9 +43,18 @@ Route::controllers([
 	'user/password' => 'Auth\PasswordController',
 ]);
 
-Route::get('home/pay', [
+Route::get('home/services/kingston/buy', [
 	'as' => 'payment',
 	'uses' => 'PaymentController@index'
+]);
+
+Route::get('home/purchased', [
+	'as' => 'purchased',
+	'uses' => 'PurchesedController@index'
+]);
+
+Route::get('home/purchased/{id}', [
+	'uses' => 'PurchesedController@show'	
 ]);
 
 Route::post('home/pay', [
